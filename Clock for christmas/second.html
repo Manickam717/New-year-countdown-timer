@@ -1,0 +1,92 @@
+<!-- New year count down -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time For New Year</title>
+    <link rel="icon" href="Santa.png">
+    <style>
+        body {
+            background-image: url('Background.jpg');
+        }
+
+        .transparent-box {
+            margin: 25px auto;
+            width: 1000px;
+            height: 550px;
+            background-color: transparent;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transparent-box">
+
+        <h1 style="color: transparent; 
+    background-image: linear-gradient(to right, rgba(255, 204, 204, 1), rgb(255, 0, 191), rgb(255, 0, 0));
+    -webkit-background-clip: text; 
+    background-clip: text; text-align:center; font-size:50px; padding-top:10px;">New Year Count Down</h1>
+
+        <div id="output" style="color: transparent; 
+    background-image: linear-gradient(to right, rgba(255, 204, 204, 1), rgb(255, 255, 255), rgb(255, 255, 255));
+    -webkit-background-clip: text; 
+    background-clip: text; text-align:center;  font-size:60px; padding:10px;"></div>
+
+        <div id="date" style="color: transparent; 
+    background-image: linear-gradient(to right, rgba(255, 204, 204, 1), rgb(255, 255, 255), rgb(255, 255, 255));
+    -webkit-background-clip: text; 
+    background-clip: text; text-align:center;  font-size:60px; padding:10px;"></div>
+
+        <div id="diff" style="color: transparent; 
+    background-image: linear-gradient(to right, rgba(255, 204, 204, 1), rgb(0, 195, 255), rgb(0, 102, 255));
+    -webkit-background-clip: text; 
+    background-clip: text; text-align:center;  font-size:50px; padding-top:20px;"></div>
+
+    </div>
+
+    <script>
+        function currentdate() {
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+
+            let x = "AM";
+            if (hours >= 12) {
+                x = "PM";
+            }
+            outputs = hours + " : " + minutes + " : " + seconds + "   " + x;
+            document.getElementById('output').innerHTML = outputs;
+
+        }
+        setInterval(currentdate, 1000);
+        function daw() {
+            let date = new Date();
+            let da = date.getDate();
+            let mo = date.getMonth() + 1;
+            let ye = date.getFullYear();
+            dat = da + " / " + mo + " / " + ye;
+            document.getElementById('date').innerHTML = dat;
+        }
+        daw();
+        function remain() {
+            let date = new Date();
+            let newyear = new Date("01/01/2025");
+            let difference = newyear - date;
+            let seconds = Math.floor(difference / 1000);
+            let days = Math.floor(seconds / (3600 * 24));
+            let hours = Math.floor((seconds % (3600 * 24)) / (3600));
+            let minutes = Math.floor((seconds % 3600) / 60);
+            let sec = Math.floor(seconds % 60);
+            document.getElementById('diff').innerHTML = days + " Days " + hours + " Hours " + minutes + " Minutes " + sec + " Seconds" + " Remains in 2024";
+        }
+        setInterval(remain, 1000);
+    </script>
+</body>
+
+</html>
